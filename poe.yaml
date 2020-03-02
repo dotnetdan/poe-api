@@ -20,12 +20,15 @@ components:
     PublicStashTabsResponse:
       type: object
       properties:
-        next__change_id:
+        next_change_id:
           type: string
+          example: "612030944-629006828-597105372-677927742-645427942"
         stashes:
           type: array
           items:
             $ref: '#/components/schemas/Stash'
+      required:
+        - next_change_id
     Stash:
       type: object
       description: Represents a single stash tab
@@ -40,8 +43,8 @@ components:
           type: string
         stash:
           type: string
-          description: stash tab name
-          example: Items for sale
+          description: Stash tab name
+          example: "Low level uniques"
         stashType:
           type: string
           example: PremiumStash
