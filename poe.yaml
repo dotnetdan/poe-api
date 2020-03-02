@@ -5,7 +5,7 @@ servers:
     url: https://www.pathofexile.com
 info:
   title: Path of Exile Public Stash Tabs API
-  version: "3.6.0"
+  version: "3.7.0"
   description: |
     Specification for the Path of Exile public stash tabs API.
 
@@ -251,6 +251,21 @@ components:
             - I
             - S
             - G
+        incubatedItem:
+          type: object
+          properties:
+            name:
+              type: string
+              example: "Quality Gem"
+            level:
+              type: integer
+              description: Required monster level kills
+              example: 68
+            progress:
+              type: integer
+            total:
+              type: integer
+              description: Monster kills required
     ItemProperty:
       type: object
       description: Miscellaneous property specific to an item's type. Consists of a name and values.
