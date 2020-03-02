@@ -266,6 +266,40 @@ components:
             total:
               type: integer
               description: Monster kills required
+        hybrid:
+          type: object
+          description: "Details about Vaal Skill Gems"
+          properties:
+            baseTypeName:
+              type: string
+              description: "Name of the base gem"
+              example: "Fireball"
+            properties:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "Souls Per Use"
+                  values:
+                    type: array
+                    minItems: 2
+                    maxItems: 2
+                    items:
+                      anyOf:
+                        - type: string
+                        - type: number
+                  displayMode:
+                    type: integer
+            explicitMods:
+              type: array
+              items:
+                type: string
+              example: ["Deals 8 to 11 Fire Damage", "Fires Projectiles at all nearby Enemies", "50% increased Area of Effect"]
+            secDescrText:
+              type: string
+              example: "Launches a series of fireballs in all directions around the caster."
     ItemProperty:
       type: object
       description: Miscellaneous property specific to an item's type. Consists of a name and values.
@@ -298,7 +332,7 @@ components:
                 - type: string
                 - type: number
         displayMode:
-          type: number
+          type: integer
           description: >
             Possible values:
               * 0 - `name` should be displayed as \`${name}: ${values.join(', ')}\` if 
