@@ -93,12 +93,6 @@ components:
         id:
           type: string
           format: uuid
-        elder:
-          type: boolean
-          description: true if the item can have elder mods (elder background).
-        shaper:
-          type: boolean
-          description: true if the item can have shaper mods (shaper background).
         fractured:
           type: boolean
           description: true if the item can have fractured mods (fractured background).
@@ -301,6 +295,21 @@ components:
             secDescrText:
               type: string
               example: "Launches a series of fireballs in all directions around the caster."
+        influences:
+          type: object
+          properties:
+            shaper:
+              type: boolean
+            elder:
+              type: boolean
+            crusader:
+              type: boolean
+            redeemer:
+              type: boolean
+            hunter:
+              type: boolean
+            warlord:
+              type: boolean
     ItemProperty:
       type: object
       description: Miscellaneous property specific to an item's type. Consists of a name and values.
