@@ -225,8 +225,7 @@ components:
         inventoryId:
           type: string
           description: >
-            Id of the slot where this item is located. `StashX` for stash number `X`.
-            `BodyArmour`, `Flask` etc for actual inventory slots.
+            ID of the stash tab containing this item. `StashX` for stash number `X`.
         isRelic:
           type: boolean
           description: true if the item is a relic item (introduced in Legacy league).
@@ -287,14 +286,7 @@ components:
                     example: "Souls Per Use"
                   values:
                     type: array
-                    minItems: 2
-                    maxItems: 2
-                    items:
-                      anyOf:
-                        - type: string
-                        - type: number
-                  displayMode:
-                    type: integer
+                    $ref: '#/components/schemas/Values'
             explicitMods:
               type: array
               items:
@@ -316,24 +308,7 @@ components:
           example: "Item Quantity"
         values:
           type: array
-          example: [+60%, 1]
-          description: >
-            Tuple where the first value is the display string.
-            The second value describes how the value should be displayed:
-              * 0 - white (simple) text
-              * 1 - blue (augmented) text
-              * 4 - red (fire damage) text
-              * 5 - blue (cold damage) text
-              * 6 - yellow (lightning damage) text
-              * 7 - red-violet (chaos damage) text
-          items:
-            type: array
-            minItems: 2
-            maxItems: 2
-            items:
-              anyOf:
-                - type: string
-                - type: number
+          $ref: '#/components/schemas/Values'
         displayMode:
           type: integer
           description: >
@@ -353,6 +328,27 @@ components:
         type:
           type: number
           description: The order in which the lines should be displayed
+    Values:
+      type: array
+      example: ["+60%", 1]
+      description: >
+        Tuple where the first item is a value and the second item is a display format.
+
+        Display formats:
+          * 0 - white (simple) text
+          * 1 - blue (augmented) text
+          * 4 - red (fire damage) text
+          * 5 - blue (cold damage) text
+          * 6 - yellow (lightning damage) text
+          * 7 - red-violet (chaos damage) text
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          anyOf:
+            - type: string
+            - type: number
 paths:
   /api/public-stash-tabs:
     get:
@@ -363,8 +359,7 @@ paths:
       parameters:
         - name: id
           in: query
-          description: |
-            The next change ID you recieved from previously fetching changes. Default: 0
+          description: The next change ID you recieved from previously fetching changes.
           schema:
             type: string
       responses:
