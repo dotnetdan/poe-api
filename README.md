@@ -1,3 +1,1 @@
-
-https://app.swaggerhub.com/apis/Chuanhsing/poe/1.0.0
-
+# OpenAPI Specification for Path of Exile's Public Stash Tab API
