@@ -207,15 +207,21 @@ components:
               * `2` - rare items
               * `3` - unique items
               * `4` - gems
-        category:
-          description: > 
-            Should only contain one property which is the "superclass" and an array
-            where the only member is the "subclass"
+        extended:
           type: object
-          additionalProperties:
-            type: array
-            items:
+          properties:
+            category: 
               type: string
+              example: "jewels"
+            subcategories:
+              type: array
+              items: 
+                type: string
+              example: ["abyss"]
+            prefixes:
+              type: integer
+            suffixes:
+              type: integer
         x:
           type: number
           description: "X coordinate in the specified frame."
