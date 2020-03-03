@@ -5,7 +5,7 @@ servers:
     url: https://www.pathofexile.com
 info:
   title: Path of Exile Public Stash Tabs API
-  version: "3.7.0"
+  version: "3.9.0"
   description: |
     Specification for the Path of Exile public stash tabs API.
 
